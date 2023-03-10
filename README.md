@@ -16,3 +16,7 @@ fila.retirar(14);
 fila.inserir(14);
 fila.retirar(28);
 fila.inserir(28);
+
+  Classe Ordenar:
+    tamanho;
+    *array;
