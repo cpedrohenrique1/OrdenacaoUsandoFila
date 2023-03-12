@@ -1,32 +1,36 @@
 #include "fila.h"
 
-namespace Pedro{
-    Fila::Fila(int tamanho):
-        tamanho(0),
-        array(0),
-        inicio(-1),
-        fim(-1),
-        quantidadeElementos(0)
+namespace Pedro
+{
+    Fila::Fila(int tamanho) : tamanho(0),
+                              array(0),
+                              inicio(-1),
+                              fim(-1),
+                              quantidadeElementos(0)
     {
         if (tamanho <= 0)
             throw QString("Tamanho de vetor invalido");
-        try{
+        try
+        {
             array = new int[tamanho];
             this->tamanho = tamanho;
-        }catch(std::bad_alloc &erro){
+        }
+        catch (std::bad_alloc &erro)
+        {
             throw QString("Nao foi possivel criar vetor");
         }
     }
 
     Fila::~Fila()
     {
-        if(array){
+        if (array)
+        {
             delete[] array;
             array = nullptr;
         }
     }
 
-    bool Fila::estaVazia()const
+    bool Fila::estaVazia() const
     {
         return (!quantidadeElementos);
     }
@@ -75,10 +79,8 @@ namespace Pedro{
         return aux;
     }
 
-    int Fila::getQuantidadeElementos()const
+    int Fila::getQuantidadeElementos() const
     {
         return quantidadeElementos;
     }
 }
-
-

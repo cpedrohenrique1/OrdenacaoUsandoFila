@@ -3,10 +3,8 @@
 #include "ordenar.h"
 #include "QMessageBox"
 
-
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+    : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 }
@@ -20,22 +18,26 @@ static Pedro::Ordenar Ordem;
 
 void MainWindow::on_BotaoCriar_clicked()
 {
-    try{
+    try
+    {
         Ordem.setVetor(ui->InputQuantidadeElementos->text().toInt());
         ui->SaidaArrayOriginal->setText(Ordem.acessarVetor());
-    }catch (QString &erro){
+    }
+    catch (QString &erro)
+    {
         QMessageBox::critical(this, "Erro ", erro);
     }
 }
 
 void MainWindow::on_BotaoOrdenar_clicked()
 {
-    try{
+    try
+    {
         Ordem.OrdenarFila(ui->InputRegra->currentText());
         ui->SaidaArrayOrdenado->setText(Ordem.acessarVetor());
-    }catch (QString &erro)
+    }
+    catch (QString &erro)
     {
         QMessageBox::critical(this, "Erro ", erro);
     }
 }
-

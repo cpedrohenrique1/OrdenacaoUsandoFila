@@ -2,7 +2,8 @@
 #define FILA_H
 #include <QString>
 
-namespace Pedro{
+namespace Pedro
+{
     class Fila
     {
     private:
@@ -11,13 +12,14 @@ namespace Pedro{
         int inicio;
         int fim;
         int quantidadeElementos;
+
     public:
         Fila(int tamanho);
         ~Fila();
-        bool estaVazia()const;
-        bool estaCheio()const;
-        int getQuantidadeElementos()const;
-        int acessar()const;
+        bool estaVazia() const;
+        bool estaCheio() const;
+        int getQuantidadeElementos() const;
+        int acessar() const;
         void inserir(int entrada);
         int retirar();
     };
