@@ -1,18 +1,22 @@
 #ifndef ORDENAR_H
 #define ORDENAR_H
 #include <QString>
-#include "numerosaleatorios.h"
+#include <ctime>
 #include "fila.h"
 
 namespace Pedro{
     class Ordenar
     {
     private:
-        Pedro::Fila f;
-
+        int tamanho;
+        int *vetor;
     public:
-        Ordenar(int tamanho);
-        void OrdenarFila();
+        Ordenar();
+        void setVetor(int);
+        void OrdenarFila(QString);
+        QString acessarVetor();
+        void OrdenarFilaCrescente(Pedro::Fila&);
+        void OrdenarFilaDecrescente(Pedro::Fila&);
     };
 }
 

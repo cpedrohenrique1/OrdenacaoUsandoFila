@@ -12,13 +12,11 @@ SOURCES += \
     fila.cpp \
     main.cpp \
     mainwindow.cpp \
-    numerosaleatorios.cpp \
     ordenar.cpp
 
 HEADERS += \
     fila.h \
     mainwindow.h \
-    numerosaleatorios.h \
     ordenar.h
 
 FORMS += \

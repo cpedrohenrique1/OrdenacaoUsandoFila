@@ -28,7 +28,7 @@ namespace Pedro{
 
     bool Fila::estaVazia()const
     {
-        return !((bool)quantidadeElementos);
+        return (!quantidadeElementos);
     }
 
     bool Fila::estaCheio() const
@@ -47,17 +47,18 @@ namespace Pedro{
     {
         if (estaCheio())
             throw QString("fila ja cheia");
-        quantidadeElementos++;
         if (estaVazia())
         {
             inicio = fim = 0;
             array[fim] = entrada;
+            quantidadeElementos++;
             return;
         }
         fim++;
         if (fim == tamanho)
             this->fim = 0;
         array[fim] = entrada;
+        quantidadeElementos++;
     }
 
     int Fila::retirar()
@@ -72,6 +73,11 @@ namespace Pedro{
         if (estaVazia())
             inicio = fim = -1;
         return aux;
+    }
+
+    int Fila::getQuantidadeElementos()const
+    {
+        return quantidadeElementos;
     }
 }
 
