@@ -5,7 +5,7 @@ Pedro::Ordenar::Ordenar() : tamanho(0),
 {
 }
 
-void Pedro::Ordenar::setVetor(int tamanho)
+void Pedro::Ordenar::setVetor(const int &tamanho)
 {
     if (tamanho <= 0)
         throw QString("Tamanho invalido");
@@ -26,7 +26,7 @@ void Pedro::Ordenar::setVetor(int tamanho)
     }
 }
 
-void Pedro::Ordenar::OrdenarFila(QString entrada)
+void Pedro::Ordenar::OrdenarFila(const QString &entrada)
 {
     Pedro::Fila f(tamanho);
 
@@ -35,38 +35,13 @@ void Pedro::Ordenar::OrdenarFila(QString entrada)
         f.inserir(vetor[i]);
     }
 
-    for (int i = 0; i < tamanho; i++)
+    if (entrada == "Crescente")
     {
-        int minMax = f.retirar();
-        for (int j = 1; j < tamanho - i; j++)
-        {
-            int aux = f.retirar();
-            if (entrada == "Crescente")
-            {
-                if (aux < minMax)
-                {
-                    f.inserir(minMax);
-                    minMax = aux;
-                }
-                else
-                {
-                    f.inserir(aux);
-                }
-            }
-            else
-            {
-                if (aux > minMax)
-                {
-                    f.inserir(minMax);
-                    minMax = aux;
-                }
-                else
-                {
-                    f.inserir(aux);
-                }
-            }
-        }
-        vetor[i] = minMax;
+        OrdenarFilaCrescente(f);
+    }
+    else
+    {
+        OrdenarFilaDecrescente(f);
     }
 }
 
@@ -83,28 +58,44 @@ QString Pedro::Ordenar::acessarVetor()
 
 void Pedro::Ordenar::OrdenarFilaCrescente(Pedro::Fila &f)
 {
-    int var = f.retirar();
-    for (int i = 1; i < tamanho; i++) // start from 1 instead of 0
-    {
-        int acess = f.acessar();
-        f.retirar(); // remove the current element from the queue
-        if (acess < var)
-        {
-            f.inserir(var);
-            var = acess;
-        }
-        else
-        {
-            f.inserir(acess);
-        }
-    }
-    f.inserir(var); // insert the first element back into the queue
     for (int i = 0; i < tamanho; i++)
     {
-        vetor[i] = f.retirar();
+        int minMax = f.retirar();
+        for (int j = 1; j < tamanho - i; j++)
+        {
+            int aux = f.retirar();
+            if (aux < minMax)
+            {
+                f.inserir(minMax);
+                minMax = aux;
+            }
+            else
+            {
+                f.inserir(aux);
+            }
+        }
+        vetor[i] = minMax;
     }
 }
 
 void Pedro::Ordenar::OrdenarFilaDecrescente(Pedro::Fila &f)
 {
+    for (int i = 0; i < tamanho; i++)
+    {
+        int minMax = f.retirar();
+        for (int j = 1; j < tamanho - i; j++)
+        {
+            int aux = f.retirar();
+            if (aux > minMax)
+            {
+                f.inserir(minMax);
+                minMax = aux;
+            }
+            else
+            {
+                f.inserir(aux);
+            }
+        }
+        vetor[i] = minMax;
+    }
 }

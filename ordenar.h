@@ -14,8 +14,8 @@ namespace Pedro
 
     public:
         Ordenar();
-        void setVetor(int);
-        void OrdenarFila(QString);
+        void setVetor(const int &);
+        void OrdenarFila(const QString &);
         QString acessarVetor();
         void OrdenarFilaCrescente(Pedro::Fila &);
         void OrdenarFilaDecrescente(Pedro::Fila &);

@@ -2,11 +2,11 @@
 
 namespace Pedro
 {
-    Fila::Fila(int tamanho) : tamanho(0),
-                              array(0),
-                              inicio(-1),
-                              fim(-1),
-                              quantidadeElementos(0)
+    Fila::Fila(const int &tamanho) : tamanho(0),
+                                     array(0),
+                                     inicio(-1),
+                                     fim(-1),
+                                     quantidadeElementos(0)
     {
         if (tamanho <= 0)
             throw QString("Tamanho de vetor invalido");
@@ -47,7 +47,7 @@ namespace Pedro
         return array[inicio];
     }
 
-    void Fila::inserir(int entrada)
+    void Fila::inserir(const int &entrada)
     {
         if (estaCheio())
             throw QString("fila ja cheia");
@@ -81,6 +81,6 @@ namespace Pedro
 
     int Fila::getQuantidadeElementos() const
     {
-        return quantidadeElementos;
+        return this->quantidadeElementos;
     }
 }
