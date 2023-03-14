@@ -14,13 +14,13 @@ namespace Pedro
         int quantidadeElementos;
 
     public:
-        Fila(const int &tamanho);
+        Fila(const int& tamanho);
         ~Fila();
         bool estaVazia() const;
         bool estaCheio() const;
         int getQuantidadeElementos() const;
         int acessar() const;
-        void inserir(const int &entrada);
+        void inserir(const int& entrada);
         int retirar();
     };
 }

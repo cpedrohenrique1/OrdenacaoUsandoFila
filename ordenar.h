@@ -13,12 +13,11 @@ namespace Pedro
         int *vetor;
 
     public:
-        Ordenar();
-        void setVetor(const int &);
-        void OrdenarFila(const QString &);
+        Ordenar(const int& tamanho);
+        ~Ordenar();
         QString acessarVetor();
-        void OrdenarFilaCrescente(Pedro::Fila &);
-        void OrdenarFilaDecrescente(Pedro::Fila &);
+        void OrdenarCrescente();
+        void OrdenarDecrescente();
     };
 }
 

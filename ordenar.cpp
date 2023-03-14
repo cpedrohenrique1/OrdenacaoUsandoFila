@@ -1,11 +1,7 @@
 #include "ordenar.h"
 
-Pedro::Ordenar::Ordenar() : tamanho(0),
+Pedro::Ordenar::Ordenar(const int& tamanho) : tamanho(0),
                             vetor(0)
-{
-}
-
-void Pedro::Ordenar::setVetor(const int &tamanho)
 {
     if (tamanho <= 0)
         throw QString("Tamanho invalido");
@@ -26,23 +22,10 @@ void Pedro::Ordenar::setVetor(const int &tamanho)
     }
 }
 
-void Pedro::Ordenar::OrdenarFila(const QString &entrada)
+Pedro::Ordenar::~Ordenar()
 {
-    Pedro::Fila f(tamanho);
-
-    for (int i = 0; i < tamanho; i++)
-    {
-        f.inserir(vetor[i]);
-    }
-
-    if (entrada == "Crescente")
-    {
-        OrdenarFilaCrescente(f);
-    }
-    else
-    {
-        OrdenarFilaDecrescente(f);
-    }
+    delete[] vetor;
+    vetor = nullptr;
 }
 
 QString Pedro::Ordenar::acessarVetor()
@@ -56,8 +39,15 @@ QString Pedro::Ordenar::acessarVetor()
     return saida;
 }
 
-void Pedro::Ordenar::OrdenarFilaCrescente(Pedro::Fila &f)
+void Pedro::Ordenar::OrdenarCrescente()
 {
+    Pedro::Fila f(tamanho);
+
+    for (int i = 0; i < tamanho; i++)
+    {
+        f.inserir(vetor[i]);
+    }
+
     for (int i = 0; i < tamanho; i++)
     {
         int minMax = f.retirar();
@@ -78,8 +68,15 @@ void Pedro::Ordenar::OrdenarFilaCrescente(Pedro::Fila &f)
     }
 }
 
-void Pedro::Ordenar::OrdenarFilaDecrescente(Pedro::Fila &f)
+void Pedro::Ordenar::OrdenarDecrescente()
 {
+    Pedro::Fila f(tamanho);
+
+    for (int i = 0; i < tamanho; i++)
+    {
+        f.inserir(vetor[i]);
+    }
+
     for (int i = 0; i < tamanho; i++)
     {
         int minMax = f.retirar();

@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "ordenar.h"
 #include "QMessageBox"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -11,19 +10,19 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    delete objetoVetor;
+    objetoVetor = nullptr;
     delete ui;
 }
-
-static Pedro::Ordenar Ordem;
 
 void MainWindow::on_BotaoCriar_clicked()
 {
     try
     {
-        Ordem.setVetor(ui->InputQuantidadeElementos->text().toInt());
-        ui->SaidaArrayOriginal->setText(Ordem.acessarVetor());
+        objetoVetor = new Pedro::Ordenar(ui->InputQuantidadeElementos->text().toInt());
+        ui->SaidaArrayOriginal->setText(objetoVetor->acessarVetor());
     }
-    catch (QString &erro)
+    catch (QString& erro)
     {
         QMessageBox::critical(this, "Erro ", erro);
     }
@@ -33,8 +32,15 @@ void MainWindow::on_BotaoOrdenar_clicked()
 {
     try
     {
-        Ordem.OrdenarFila(ui->InputRegra->currentText());
-        ui->SaidaArrayOrdenado->setText(Ordem.acessarVetor());
+        if (ui->InputRegra->currentText() == "Crescente")
+        {
+            objetoVetor->OrdenarCrescente();
+        }
+        else
+        {
+            objetoVetor->OrdenarDecrescente();
+        }
+        ui->SaidaArrayOrdenado->setText(objetoVetor->acessarVetor());
     }
     catch (QString &erro)
     {

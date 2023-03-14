@@ -25,5 +25,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    Pedro::Ordenar *objetoVetor;
 };
 #endif // MAINWINDOW_H
